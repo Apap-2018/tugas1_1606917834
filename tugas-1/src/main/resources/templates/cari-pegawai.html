@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Cari Pegawai</title>
+
+<script type="text/javascript" src="/DataTables/datatables.js"></script>
+<script type="text/javascript" src="/DataTables/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="/DataTables/jquery.dataTables.min.js"></script>
+
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/DataTables/datatables.css" />
+<link rel="stylesheet" href="/DataTables/jQuery.dataTables.min.css" />
+
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	
+	<div class="container">
+		<h1 class="page-header">Cari Pegawai</h1>
+		<div>
+			<label for="provinsi">Provinsi</label> 
+			<input class="form-control mr-sm-2"
+					type="text"
+					aria-label="Provinsi" 
+					name="provinsi" 
+					readonly="true" 
+					th:value="${provinsi.nama}"/>
+			<label for="instansi">Instansi</label> 
+			<input class="form-control mr-sm-2"
+					type="text"
+					aria-label="Instansi" 
+					name="instansi" 
+					readonly="true" 
+					th:value="${instansi.nama}"/>
+			<label for="jabatan">Jabatan</label> 
+			<input class="form-control mr-sm-2"
+					type="text"
+					aria-label="Jabatan" 
+					name="jabatan" 
+					readonly="true" 
+					th:value="${jabatan.id}"/>
+		</div>
+		
+		<hr/>
+		
+		<table id="pgw" class="display" cellspacing="0" width="100%">
+	        <thead>
+	            <tr>
+	                <th>NIP</th>
+	                <th>Nama</th>
+	                <th>Tempat Lahir</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <div th:each="pegawai,iterationStatus: ${allPegawai}">
+		            <tr>
+		            	<td th:text="${pegawai.nip}"></td>
+		            	<td th:text="${pegawai.nama}"></td>
+		            	<td th:text="${pegawai.tempatLahir}"></td>
+		            </tr>
+		       	</div>
+			</tbody>
+		</table>
+		<script>
+			$(document).ready(function() {
+			    $('#pgw').DataTable();
+			} );
+		</script>
+	</div>
+</body>
+
+</html>
+

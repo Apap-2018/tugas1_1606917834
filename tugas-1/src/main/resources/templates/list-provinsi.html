@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Cari Pegawai</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: nav"></div>
+	
+	<div class="container">
+		<h1 class="page-header">Cari Pegawai</h1>
+
+		<form th:object="${allProv}" action="/pegawai/cari" method="get">
+			<div>
+				<label for="prov">Provinsi</label>
+				<select class="form-control" name="prov" required="true">
+				    <option value="0">Pilih Provinsi</option>
+				    <option th:each="prov : ${allProv}" th:value="${prov.id}" th:text="${prov.nama}"></option>
+			    </select>
+			</div>
+	
+			<div>
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
+

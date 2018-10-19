@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Cari Pegawai</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: nav"></div>
+	
+	<div class="container">
+		<h1 class="page-header">Cari Pegawai</h1>
+		<div>
+			<label for="prov">Provinsi</label> 
+			<input class="form-control mr-sm-2"
+					type="text"
+					aria-label="Provinsi" 
+					name="prov" 
+					readonly="true" 
+					th:value="${provinsi.nama}"/>
+			<label for="inst">Instansi</label> 
+			<input class="form-control mr-sm-2"
+					type="text"
+					aria-label="Instansi" 
+					name="inst" 
+					readonly="true" 
+					th:value="${instansi.nama}"/>
+		</div>
+		<form  th:object="${allJabatan}" action="/pegawai/cari" method="get">
+			<div>
+				<input type="hidden" name="prov" th:value="${prov.id}" />
+			</div>
+			<div>
+				<input type="hidden" name="inst" th:value="${inst.id}" />
+			</div>
+			<div>
+				<label for="jabs">Jabatan</label>
+				<select class="form-control" name="jabs" required="true">
+				    <option value="0">Pilih Jabatan</option>
+				    <option th:each="jabatan : ${allJabatan}" th:value="${jabatan.id}" th:text="${jabatan.nama}"></option>
+			    </select>
+			</div>
+	
+			<div>
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
+
