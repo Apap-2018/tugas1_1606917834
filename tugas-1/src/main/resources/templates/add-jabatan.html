@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Tambah Jabatan</title>
-		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
-		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+		<object th:include="fragment :: css" th:remove="tag"></object>
+		<object th:include="fragment :: js" th:remove="tag"></object>
 		
 	</head>
 	
 	<body>
-		<nav th:replace="fragments/fragment :: navbar"></nav>
+		<nav th:replace="fragment :: navbar"></nav>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6">
@@ -19,17 +19,17 @@
 									<table>
 											<tr style=height:50px>
 												<td style=width:200px>Nama</td>
-												<td><input type="text" th:field="${jabatan.nama}"/></td>
+												<td><input type="text" th:field="${jabatan.nama}" th:required="true"/></td>
 											</tr>
 											
 											<tr style=height:50px>
 												<td>Deskripsi</td>
-												<td><input type="text" th:field="${jabatan.deskripsi}"/></td>
+												<td><input type="text" th:field="${jabatan.deskripsi}" th:required="true"/></td>
 											</tr>
 											
 											<tr >
 												<td>Gaji Pokok</td>
-												<td><input type="number" th:field="${jabatan.gajiPokok}"/></td>
+												<td><input type="number" th:field="${jabatan.gajiPokok}" th:required="true"/></td>
 											</tr>
 									</table>
 									<p></p>

@@ -3,12 +3,12 @@
 	<head>
 		<title>Home Page</title>
 		
-		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
-		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+		<object th:include="fragment :: css" th:remove="tag"></object>
+		<object th:include="fragment :: js" th:remove="tag"></object>
 	</head>
 	
 	<body>
-		<nav th:replace="fragments/fragment :: navbar"></nav>
+		<nav th:replace="fragment :: navbar"></nav>
 		<div class="container-fluid">
 			<h2 style=text-align:center>SISTEM INFORMASI KEPEGAWAIAN</h2>
 			<h3 style=text-align:center>Selamat Datang di Sistem Informasi Kepegawaian</h3>

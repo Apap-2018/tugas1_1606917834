@@ -2,8 +2,8 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 	<title>View Detail Pegawai</title>
-	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
-	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	<object th:include="fragment :: css" th:remove="tag"></object>
+	<object th:include="fragment :: js" th:remove="tag"></object>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
@@ -21,7 +21,7 @@
 	}
 </style>
 <body>
-	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<nav th:replace="fragment :: navbar"></nav>
 	<div class="row" id = "kotakcari">
 		<div class ="col-md-5" >
 			<div class="card" >

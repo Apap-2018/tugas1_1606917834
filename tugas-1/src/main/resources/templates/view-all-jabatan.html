@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>ViewAll Jabatan</title>
-		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
-		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+		<object th:include="fragment :: css" th:remove="tag"></object>
+		<object th:include="fragment :: js" th:remove="tag"></object>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
@@ -12,7 +12,7 @@
 	
 	<body>
 
-		<nav th:replace="fragments/fragment :: navbar"></nav>
+		<nav th:replace="fragment :: navbar"></nav>
 		<div class="container-fluid" th:object="${listJabatan}">
 			<table id="table_id" class="display" style="background-color: #42a1f4;color: black;">
 		    <thead>
