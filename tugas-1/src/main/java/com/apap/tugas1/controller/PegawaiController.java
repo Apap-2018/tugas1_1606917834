@@ -312,7 +312,7 @@ public class PegawaiController {
 		
 		model.addAttribute("allJabatan", listJabatan);
 		model.addAttribute("jabatan", jabatan);
-		model.addAttribute("size", pegawai.getPegawaiJabatan().size());
+		model.addAttribute("size", pegawai.getPegawaiJabatan().size()-1);
 		return "ubah-pegawai";
 	}
 	

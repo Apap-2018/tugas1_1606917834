@@ -71,87 +71,17 @@
 									    				<option th:text = ${jabs.nama} th:value = ${jabs.id} ></option>
 									    				
 								      				</a>
-								      				<option th:value=null>- Pilih Jabatan -</option>
+								      				
 											    </select>
 											    
 											    </div>
 									    	</div>
 										<div th:name="addRow" id= "buttonJabatan">Tambah Jabatan Lainnya</div>
-										<div th:name="deleteRow" id= "buttonHapusJabatan">Hapus Jabatan Paling Akhir</div>
+										<div th:style="red" th:name="deleteRow" id= "buttonHapusJabatan">Hapus Jabatan Paling Akhir</div>
 										
 						    			</div>
 									</div>
-									<!--  
-									<div><button type="submit" th:name="removeRow" th:value="${size}">Remove Row</button></div>
-									<div class="form-group">
-										<label class="control-label col-sm-2">Nama:</label>
-										<div class="col-sm-10">
-									    	<input type="text" class="form-control" name="nama" placeholder="Masukkan Nama" th:value="${pegawai.nama}">
-									    </div>
-									</div>
-									<table>
-											<tr style=height:50px>
-												<td style=width:200px>Nama</td>
-												<td><input type="text" th:field="${pegawai.nama}"/></td>
-											</tr>
-											
-											<tr style=height:50px>
-												<td>Tempat Lahir</td>
-												<td><input type="text" th:field="${pegawai.tempatLahir}"/></td>
-											</tr>
-											
-											<tr >
-												<td>Tanggal Lahir</td>
-												<td><input type="date" th:field="${pegawai.tanggalLahir}"/></td>
-											</tr>
-											<tr style=height:50px>
-												<td>Tahun Masuk</td>
-												<td><input type="text" th:field="${pegawai.tahunMasuk}"/></td>
-											</tr>
-											<tr>
-												<td>Provinsi</td>
-												<td>
-													<form th:action="@{/pegawai/cekInstansi}" method="GET">
-															<select class="form-control" id = "provinsi"> 
-															    <option th:each="provinsixx: ${listProvinsi}" th:value="${provinsixx.id}" th:text="${provinsixx.nama}"></option>
-															</select>
-															<p></p>
-													</form>
-												</td>
-											</tr>
-											<tr>
-												<td>Instansi</td>
-												<td>
-													<form th:action="@{/pegawai/tambah}" method="GET">
-															<select class="form-control" id="form-inst" name = "instansis">
-															    <option class="instansi" th:each="instansixx: ${allInstansi}" th:value="${instansixx.id}" th:text="${instansixx.nama}"></option>
-															</select>
-															<p></p>
-													</form>
-												</td>
-											</tr>
-											
-											<tr>
-												<td>
-													Jabatan
-												</td>
-												<td>
-													<div id = "kumpulanRowJabatan">
-												    		<select name = "jabatanPegawai" class="form-control" id = "jabatan"> 
-												    			<option value=null>- Pilih Jabatan -</option>
-														    	<a th:each="jabs, iterationStatus : ${allJabatan}">
-															    	<option th:text = ${jabs.nama} th:value = ${jabs.id}></option>
-															    	<button  class="btn btn-primary" type="submit" name="removeRow" th:value="${iterationStatus.index}">Remove Row</button>
-														      	</a>
-														    </select><br>
-												    	</div>
-														
-													
-													<div value = "2" name="addRow" id= "buttonJabatan">Tambah Jabatan Lainnya</div>
-												
-												</td>
-											</tr>
-									</table> -->
+
 									<p></p>
 									<button type="submit" class="btn btn-primary" id="buttonJabatan" name="save">Submit</button>
 								</form>
@@ -196,7 +126,11 @@
 	});
 	
 	$("#buttonJabatan").click(function(){
+		if (jabatanCount == -1){
+			jabatanCount ++;
+		}
 		console.log("masuk");
+		console.log(jabatanCount)
 		var data = $(this).val();
 		$.ajax({
 			headers:{	
