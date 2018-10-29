@@ -15,7 +15,7 @@
 					<div class="card">
 						<div class="card-header" th:text="'Detail pegawai dengan nip : ' + ${pegawai.nip}"></div>
 						<div class="card-body">
-							<table>
+							<table class="table">
 								<tr>
 									<td style=width:200px>NIP</td>
 									<td th:text="${pegawai.nip}"></td>
@@ -43,8 +43,8 @@
 								<tr>
 									<td style=width:200px>Jabatan</td>
 									<td>
-										<div th:each="jabatan : ${listJabatan}">
-											<div th:text="${jabatan.nama}"></div>
+										<div th:each="jabatan : ${pegawai.pegawaiJabatan}">
+											<div th:text="${jabatan.jabatan.nama}"></div>
 										</div>
 									</td>
 								<tr>

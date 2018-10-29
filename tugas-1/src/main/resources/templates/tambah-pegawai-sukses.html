@@ -8,7 +8,11 @@
 	
 	<body>
 		<nav th:replace="fragments/fragment :: navbar"></nav>
-		<h2>Sukses!!</h2>
-		<h3 th:text="'Pegawai dengan NIP ' + ${pegawai.nip} + ' berhasil ditambahkan'"></h3>
+		<div class="alert alert-success">
+			<strong>Sukses!</strong>
+			<p></p>
+  			<strong th:text="'Pegawai dengan NIP ' + ${pegawai.nip} + ' berhasil ditambahkan'"></strong> Tekan ini untuk kembali ke <a th:href="@{/}" class="alert-link">home</a>.
+		</div>
+		
 	</body>
 </html>

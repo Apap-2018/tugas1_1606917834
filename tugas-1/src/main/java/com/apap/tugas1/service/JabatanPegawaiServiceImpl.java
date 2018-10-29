@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.apap.tugas1.model.JabatanPegawaiModel;
+import com.apap.tugas1.model.PegawaiModel;
 import com.apap.tugas1.repository.JabatanPegawaiDB;
 
 @Service
@@ -26,6 +27,18 @@ public class JabatanPegawaiServiceImpl implements JabatanPegawaiService {
 	public void addJabatanPegawai(JabatanPegawaiModel jabatanPegawai) {
 		// TODO Auto-generated method stub
 		jabatanPegawaiDb.save(jabatanPegawai);
+	}
+
+	@Override
+	public List<JabatanPegawaiModel> findJabatanPegawaiByPegawai(PegawaiModel pegawai) {
+		// TODO Auto-generated method stub
+		return jabatanPegawaiDb.findByPegawai(pegawai);
+	}
+
+	@Override
+	public void deleteJabatanPegawai(JabatanPegawaiModel jabatanPegawai) {
+		// TODO Auto-generated method stub
+		jabatanPegawaiDb.delete(jabatanPegawai);
 	}
 	
 

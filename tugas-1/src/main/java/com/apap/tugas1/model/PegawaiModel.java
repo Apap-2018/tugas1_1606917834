@@ -57,7 +57,6 @@ public class PegawaiModel implements Serializable{
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_instansi", referencedColumnName = "id", nullable = false)
-	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	@JsonIgnore
 	private InstansiModel instansi;
 	

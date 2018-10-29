@@ -1,6 +1,7 @@
 package com.apap.tugas1.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.apap.tugas1.model.InstansiModel;
+import com.apap.tugas1.model.JabatanPegawaiModel;
 import com.apap.tugas1.model.PegawaiModel;
+import com.apap.tugas1.repository.JabatanPegawaiDB;
 import com.apap.tugas1.repository.PegawaiDB;
 
 @Service
@@ -17,6 +20,12 @@ import com.apap.tugas1.repository.PegawaiDB;
 public class PegawaiServiceImpl implements PegawaiService {
 	@Autowired
 	private PegawaiDB pegawaiDb;
+	
+	@Autowired
+	private JabatanPegawaiDB jabatanPegawaiDb;
+	@Autowired
+	private JabatanPegawaiService jabatanPegawaiService;
+	
 	@Override
 	public PegawaiModel getPegawaiDetailByNip(String nip) {
 		return pegawaiDb.findPegawaiByNip(nip);
@@ -46,8 +55,23 @@ public class PegawaiServiceImpl implements PegawaiService {
 		pegawaiToUpdate.setTahunMasuk(pegawai.getTahunMasuk());
 		pegawaiToUpdate.setNip(pegawai.getNip());
 		pegawaiToUpdate.setInstansi(pegawai.getInstansi());
+		/**
+		List <JabatanPegawaiModel> list = jabatanPegawaiDb.findAll();
+		
+		for (int i=0;i< list.size()-1 ;i++) {
+			//pegawaiToUpdate.getPegawaiJabatan().remove(i);
+			if(list.get(i).getPegawai().getId().equals(id)) {
+				list.remove(i);
+				
+			}
+		}
+		*/
+		System.out.println(pegawai.getPegawaiJabatan().size()+" ini size");
 		pegawaiToUpdate.setPegawaiJabatan(pegawai.getPegawaiJabatan());
+		System.out.println(pegawaiToUpdate.getPegawaiJabatan().size()+" ini size sesudah");
 		pegawaiDb.save(pegawaiToUpdate);
+		System.out.println(pegawaiToUpdate.getPegawaiJabatan().size()+ " ini size habis save");
+		System.out.println(pegawaiToUpdate.getNip()+ "nip update" + pegawai.getNip() +" nip belom update");
 	}
 	/**
 	@Override
@@ -55,6 +79,19 @@ public class PegawaiServiceImpl implements PegawaiService {
 		// TODO Auto-generated method stub
 		return pegawaiDb.findPegawaiByProvinsiByInstansiByJabatan(idProv, idInst, idJabs);
 	} */
+	@Override
+	public PegawaiModel getPegawaiDetailById(Long id) {
+		// TODO Auto-generated method stub
+		return pegawaiDb.findPegawaiById(id);
+	}
+	@Override
+	public void deleteJabatan(PegawaiModel pegawai) {
+		// TODO Auto-generated method stub
+		List<JabatanPegawaiModel> jabatanFound = jabatanPegawaiService.findJabatanPegawaiByPegawai(pegawai);
+		for (JabatanPegawaiModel jab : jabatanFound) {
+			jabatanPegawaiService.deleteJabatanPegawai(jab);
+		}
+	}
 	
 	
 	

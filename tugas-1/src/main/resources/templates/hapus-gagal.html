@@ -8,6 +8,9 @@
 	
 	<body>
 		<nav th:replace="fragments/fragment :: navbar"></nav>
-		<h3>Data tidak bisa dihapus!</h3>
+		<div class="alert alert-success">
+  			<strong>Data tidak bisa dihapus!</strong> Tekan ini untuk kembali ke <a th:href="@{/}" class="alert-link">home</a>.
+		</div>
+		
 	</body>
 </html>

@@ -8,6 +8,8 @@
 	
 	<body>
 		<nav th:replace="fragments/fragment :: navbar"></nav>
-		<h3>Data berhasil dihapus!</h3>
+		<div class="alert alert-success">
+  			<strong>Data berhasil dihapus!</strong> Tekan ini untuk kembali ke <a th:href="@{/}" class="alert-link">home</a>.
+		</div>
 	</body>
 </html>
